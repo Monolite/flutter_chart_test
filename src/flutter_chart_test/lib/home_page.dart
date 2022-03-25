@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_chart_test/model/pie_section.dart';
 import 'package:flutter_chart_test/item.dart';
+import 'package:flutter_chart_test/pie_chart_widget.dart';
 import 'package:flutter_chart_test/screen_dialog.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,23 +14,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   final sections = <PieSection>[];
 
-  buildList() {
-    return <PieSection>[
-      PieSection(title: 'titulo 1', value: 10.0),
-      PieSection(title: 'titulo 2', value: 20.0),
-      PieSection(title: 'titulo 3', value: 30.0),
-      PieSection(title: 'titulo 4', value: 40.0),
-    ];
-  }
-
-  List<ListItem> builLista() {
-    return buildList()
-        .map<ListItem>((list) => ListItem(
-              lista: list,
-            ))
-        .toList();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,14 +22,13 @@ class _HomePageState extends State<HomePage> {
       ),
       body: Column(
         children: [
+          Expanded(child: PieChartWidget(sections: sections)),
           Expanded(
-              child: Container(
-            color: Colors.green,
-          )),
-          Expanded(
-              child: ListView(
-            children: builLista(),
-          ))
+              child: ListView.builder(
+                  itemCount: sections.length,
+                  itemBuilder: (ctx, index) => ListItem(
+                        lista: sections[index],
+                      )))
         ],
       ),
       floatingActionButton: FloatingActionButton(

@@ -27,12 +27,22 @@ class PieChartWidget extends StatelessWidget {
       final color = colors[i];
       final section = sections[i];
 
-      chartSections.add(PieChartSectionData(title: section.title, value: section.value, color: color));
+      chartSections.add(
+        PieChartSectionData(
+          title: section.title,
+          value: section.value,
+          color: color,
+          radius: 120,
+        ),
+      );
     }
 
     return Container(
       margin: const EdgeInsets.all(16),
-      child: PieChart(PieChartData(sections: chartSections)),
+      child: PieChart(PieChartData(
+        sections: chartSections,
+        centerSpaceRadius: 0,
+      )),
     );
   }
 }
