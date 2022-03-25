@@ -1,6 +1,6 @@
 class PieSection {
-  final String title;
-  final double value;
+  String title = "";
+  double value = 0.0;
 
-  PieSection(this.title, this.value);
+  PieSection({required this.title, required this.value});
 }
