@@ -55,7 +55,8 @@ class _ScreenDialogState extends State<ScreenDialog> {
         TextButton(
           onPressed: () {
             if (_formKey.currentState?.validate() ?? false) {
-              final new_section = PieSection(title, double.parse(valor));
+              final new_section =
+                  PieSection(title: title, value: double.parse(valor));
               Navigator.pop(context, new_section);
             }
           },
